@@ -103,5 +103,7 @@ public class EmpleadoControllerTestRestTemplateTests {
 		assertEquals(0,empleados.size());
 		
 		ResponseEntity<Empleado> respuestaDetalle =testRestTemplate.getForEntity("http://localhost:8080/api/empleados/2",Empleado.class);
+		assertEquals(HttpStatus.NOT_FOUND, respuestaDetalle.getStatusCode());
+		assertFalse(respuestaDetalle.hasBody());
 	}
 }
